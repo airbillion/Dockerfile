@@ -10,4 +10,3 @@ RUN apk update --repository $EDGE_REPOSITORY \
 RUN pip install --upgrade pip
 RUN pip install --upgrade youtube-dl
 RUN pip install --upgrade flexget
-ENTRYPOINT ["youtube-dl"]
