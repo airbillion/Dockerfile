@@ -2,8 +2,8 @@ FROM alpine:latest
 ENV EDGE_REPOSITORY=http://dl-cdn.alpinelinux.org/alpine/edge/main
 RUN apk update --repository $EDGE_REPOSITORY \
     && apk --no-cache add ca-certificates \
-	&& apk add py-pip \
-	&& apk add ffmpeg --repository $EDGE_REPOSITORY \
+    && apk add py-pip \
+    && apk add ffmpeg --repository $EDGE_REPOSITORY \
     && pip install -I flexget transmissionrpc \
     && mkdir -p /root/.flexget \
     && touch /root/.flexget/config.yml
