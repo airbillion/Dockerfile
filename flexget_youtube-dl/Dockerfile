@@ -4,10 +4,12 @@ RUN apk update --repository $EDGE_REPOSITORY \
     && apk --no-cache add ca-certificates \
     && apk add py-pip \
     && apk add ffmpeg --repository $EDGE_REPOSITORY \
-    && pip install -I flexget transmissionrpc \
-    && mkdir -p /root/.flexget \
-    && touch /root/.flexget/config.yml
 RUN pip install --upgrade pip
-RUN pip install --upgrade youtube-dl
-RUN pip install --upgrade flexget
-CMD ["/usr/bin/flexget", "--loglevel", "debug", "daemon", "start"]
+RUN pip install --upgrade setuptools
+RUN pip install -I flexget transmissionrpc
+RUN pip install -I youtube-dl
+RUN mkdir /flexget
+
+WORKDIR /flexget	
+
+ENTRYPOINT ["/usr/bin/flexget","-c","/flexget/config.yml","--loglevel","verbose","daemon","start"]
