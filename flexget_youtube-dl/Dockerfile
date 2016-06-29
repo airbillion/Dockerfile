@@ -9,7 +9,5 @@ RUN pip install --upgrade setuptools
 RUN pip install -I flexget transmissionrpc
 RUN pip install -I youtube-dl
 RUN mkdir /flexget
-
 WORKDIR /flexget	
-
-ENTRYPOINT ["/usr/bin/flexget","-c","/flexget/config.yml","--loglevel","verbose","daemon","start"]
+CMD ["/usr/local/bin/flexget", "--loglevel", "info", "daemon", "start"]
